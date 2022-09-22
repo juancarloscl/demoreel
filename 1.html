@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <title>Usando una cámara con controles orbitales en A-Frame</title>
+  <script src="js/aframe.min.js"></script>
+  	 <script src="js/aframe-extras.loaders.min.js"></script>
+  <script src="js/aframe-orbit-controls-component.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+		<a-assets>
+             <img id="awa" src="imagenes/panor3.jpg">
+			<a-asset-item id="house" src="modelos3d/tower.glb"></a-asset-item>
+		</a-assets>
+        <a-sky src="#awa"></a-sky>
+
+		<a-entity
+          id="camera"
+          camera="fov: 80; zoom: 1;"
+          position="-30 5 10"
+          orbit-controls="
+          autoRotate: false;
+          target: #target;
+          enableDamping: true;
+          dampingFactor: 0.125;
+          rotateSpeed:0.25;
+          minDistance:3;
+          maxDistance:100;
+              "
+          mouse-cursor="">
+		</a-entity>
+	  
+     
+		
+		<a-entity id="target">
+			<a-entity gltf-model="#house" scale="0.2 0.2 0.2" rotation="0 0 0" transaltion="0 -5 0"></a-entity>
+		</a-entity>
+    </a-scene>
+</body>
+</html>
